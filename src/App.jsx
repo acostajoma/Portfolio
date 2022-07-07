@@ -1,8 +1,8 @@
-import AboutSection from "./components/AboutSection"
-import CertificationsSection from "./components/CertificationsSection"
-import ContactSection from "./components/ContactSection"
-import Header from "./components/Header"
-import ProjectsSection from "./components/ProjectsSection"
+import AboutSection from "./components/sections/About"
+import CertificationsSection from "./components/sections/Certifications"
+import ContactSection from "./components/sections/Contact"
+import Header from "./components/sections/Header"
+import ProjectsSection from "./components/sections/Projects"
 
 function App() {
 
