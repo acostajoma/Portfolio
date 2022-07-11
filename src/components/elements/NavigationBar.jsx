@@ -1,10 +1,32 @@
+import { useState } from "react"
+import PrettyLink from "./PrettyLink"
+
 const NavigationBar = () => {
+  
+  const [showNavBar, setShowNavBar] = useState(false)
+
   return (
-    <nav className="flex py-5 text-2xl text-white">
-      <a className="py-2 mx-7 relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-1 after:bg-white after:scale-x-0 after:origin-right after:transition-transform ease-in after:duration-500 hover:after:scale-x-100 hover:after:origin-left" href="#about">About me</a>
-      <a className="py-2 mx-7 relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-1 after:bg-white after:scale-x-0 after:origin-right after:transition-transform ease-in after:duration-500 hover:after:scale-x-100 hover:after:origin-left" href="#projects">Projects</a>
-      <a className="py-2 mx-7 relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-1 after:bg-white after:scale-x-0 after:origin-right after:transition-transform ease-in after:duration-500 hover:after:scale-x-100 hover:after:origin-left" href="#certifications">Certifications</a>
-      <a className="py-2 mx-7 relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-1 after:bg-white after:scale-x-0 after:origin-right after:transition-transform ease-in after:duration-500 hover:after:scale-x-100 hover:after:origin-left" href="#contact">Contact me</a>
+    <nav className="py-3 fixed z-10 top-0 w-full overflow-hidden bg-gray-800 text-2xl text-white">
+
+      <div className="container m-auto">
+        <button 
+          className="my-2 mx-5 w-fit p-2 lg:hidden rounded-full hover:bg-gray-600" 
+          onClick={() => setShowNavBar(!showNavBar) }
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+
+        </button>
+
+        <div className={`${showNavBar ? 'flex' : 'hidden'} transition-[height] ease-in duration-500  flex-col lg:flex lg:flex-row`}>
+          <PrettyLink text="About Me" linkref="#about"/>
+          <PrettyLink text="Projects" linkref="#projects"/>
+          <PrettyLink text="Certifications" linkref="#certifications"/>
+          <PrettyLink text="Contact me" linkref="#contact"/>
+        </div>
+
+      </div>
     </nav>
   )
 }

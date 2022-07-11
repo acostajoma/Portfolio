@@ -19,10 +19,8 @@ const TypingEffect = ({textToType}) => {
     }
 
     return (
-        // <div className="h-full flex items-center">
-        <div className="h-full grid grid-rows-6">
-            {/* <h1 className="text-white text-3xl whitespace-pre-line">{text}<span className="animate-ping">_</span></h1> */}
-            <h1 className="text-white text-3xl whitespace-pre-line row-start-3">{text}<span className="animate-ping">_</span></h1>
+        <div className="h-full font-MonoJet container m-auto">
+            <h1 className="text-white text-3xl whitespace-pre-line mx-7 relative top-[40%]">{text}<span className="animate-ping">_</span></h1>
         </div>
     )
 }
