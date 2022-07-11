@@ -6,7 +6,7 @@ const Header = () => {
         <header className="h-screen bg-gray-800">
             <NavigationBar />
             <TypingEffect 
-                textToType={`Jose Martin Acosta Rodriguez Developer`}
+                textToType={'Jose Martin Acosta Rodriguez\nDeveloper'}
             />
         </header>
     )

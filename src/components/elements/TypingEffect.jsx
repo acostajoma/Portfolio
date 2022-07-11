@@ -8,6 +8,7 @@ const TypingEffect = ({textToType}) => {
         typeWriter()
     }, [])
 
+
     
     const typeWriter = (i=0, typed='') => {
         if ( i < textToType.length) {
@@ -18,7 +19,11 @@ const TypingEffect = ({textToType}) => {
     }
 
     return (
-        <h2 className="text-white text-lg">{text}<span className="animate-ping">_</span></h2>
+        // <div className="h-full flex items-center">
+        <div className="h-full grid grid-rows-6">
+            {/* <h1 className="text-white text-3xl whitespace-pre-line">{text}<span className="animate-ping">_</span></h1> */}
+            <h1 className="text-white text-3xl whitespace-pre-line row-start-3">{text}<span className="animate-ping">_</span></h1>
+        </div>
     )
 }
 
