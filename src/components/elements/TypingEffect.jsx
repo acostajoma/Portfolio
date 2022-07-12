@@ -22,7 +22,7 @@ const TypingEffect = ({textToType}) => {
     }
 
     return (
-        <div className="h-full font-MonoJet container m-auto relative top-[45%]">
+        <div className="font-MonoJet container m-auto relative top-[45%]">
             <div className="text-white text-3xl sm:text-4xl whitespace-pre-line mx-7 flex flex-col lg:flex-row lg:justify-between">
                 <h1>{text}<span className="animate-ping">_</span></h1>
                 <Socials 
