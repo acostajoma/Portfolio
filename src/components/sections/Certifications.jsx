@@ -9,7 +9,7 @@ import RWVCPCIMG from "../../img/Certifications/rwvcpc.jpg"
 
 const CertificationsSection = () => {
   return (
-    <section className="py-24 px-6 m-auto container text-center" id="projects">
+    <section className="py-24 px-6 m-auto container text-center" id="certifications">
       <h2 className="text-2xl lg:text-4xl mb-6">Certifications</h2>
     
       <div className="flex flex-col flex-wrap md:flex-row gap-x-2 gap-y-10 mt-12 items-center justify-center">

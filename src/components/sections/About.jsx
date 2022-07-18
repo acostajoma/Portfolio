@@ -3,7 +3,7 @@ import PingButton from "../elements/PingButton"
 
 const AboutSection = () => {
   return (
-    <main className="bg-white container my-24 mx-auto" id="about">
+    <main className="bg-white container py-24 mx-auto" id="about">
     
       <div className="mx-6 text-justify sm:text-l lg:text-xl 2xl:text-2xl lg:leading-relaxed">
         
