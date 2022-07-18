@@ -1,4 +1,5 @@
-
+import personalImage from "../../img/personal-photo-bg.jpg" 
+import PingButton from "../elements/PingButton"
 
 const AboutSection = () => {
   return (
@@ -13,17 +14,12 @@ const AboutSection = () => {
       </div>
 
         <div className="relative max-w-fit m-auto mt-3 mb-10">
-          <img className="max-h-[32rem]" src="src/img/personal-photo-bg.png" alt="Personal Image" />
+          <img className="max-h-[32rem]" src={personalImage} alt="Personal Image" />
         
-          <a href="#contact">
-            <div className="p-2 w-fit mt-2 bg-gray-800 text-white rounded-xl text-center absolute bottom-2 right-5 inline-flex hover:bg-gray-700">
-              <p>Contact<br></br>me</p>
-              <span className="flex absolute h-3 w-3 top-0 right-0 -mt-1 -mr-1">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
-            </span>
-            </div>
-          </a>
+          <PingButton 
+            buttonText={'Contact Me'}
+            buttonHref='#contact'
+          />
         </div>
     </main>
   )
