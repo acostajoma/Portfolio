@@ -88,7 +88,7 @@ const ContactSection = () => {
           <label className="mb-2" htmlFor="message">Message:</label>
           <textarea 
               id="message"
-              placeholder="Write your message here. Example: Cool Website :D"
+              placeholder="Write your message here."
               className="p-1 mb-8 text-base placeholder-gray-400 text-gray-800 rounded-lg w-full max-w-md h-20"
               value={message}
               onChange={ e => setMessage(e.target.value)}
