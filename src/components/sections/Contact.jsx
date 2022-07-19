@@ -29,7 +29,7 @@ const ContactSection = () => {
 
   const sendMsg = async msgObj =>  {
     try {
-      const res = await fetch("https://cvy5x40vhf.execute-api.us-east-1.amazonaws.com/prod", {
+      const res = await fetch("API", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
