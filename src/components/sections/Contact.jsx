@@ -8,48 +8,54 @@ const ContactSection = () => {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
   const [alertObj, setAlertObj] = useState({})
-  const [sendingMessage, setSendingMessage] = useState()
+  const [sendingMessage, setSendingMessage] = useState(false)
 
   const handleSubmit = e => {
     e.preventDefault()
-    // Check the form hass been filled
-    if ([name, email, message].includes('')){
-      setAlertObj({message: 'All fields must be filled', error : true})
-      return
+    // Check if the form has been filled correctly, if not show alert in UI
+    const msgObj = {name, email, message}
+    for (const key in msgObj){
+      const v = msgObj[key].trim()
+      if (!v) return setAlertObj({message: `The ${key} field must be filled`, error : true})
+      else msgObj[key] = v
     }
-    if (!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
-      setAlertObj({message: 'Invalid Email', error : true})
-    //   return
-    }
-    // if (!regex.test(email)){
-    //   setAlertObj({message: 'Invalid Email', error : true})
-    //   return
-    // }
-    //Enviar datos al endpoint
+    // Check with regex if email is valid, if not show alert in UI
+    if (!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(msgObj["email"])) return setAlertObj({message: 'Invalid Email', error : true})
+    //Fetch to API and show loading animation in UI
     setSendingMessage(true)
-    const messageData = JSON.stringify({name , email, message})
-    console.log(messageData) 
-    sendMessageToApi (messageData)
-    //Resetear Datos si se tuvo exito
-    setName('')
-    setEmail('')
-    setMessage('')
-    setTimeout(() => {
-      setAlertObj({})
-    }, 3000);yo
+    sendMsg(msgObj)
+    
   }
 
-  const sendMessageToApi = message => {
-    fetch("https://j5yvccvh5d.execute-api.us-east-1.amazonaws.com/prod/send-email", {
+  const sendMsg = async msgObj =>  {
+    try {
+      const res = await fetch("https://cvy5x40vhf.execute-api.us-east-1.amazonaws.com/prod", {
       method: "POST",
-      data: message
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(msgObj)
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
-      setSendingMessage(false)
-    })
-    .catch(error => console.log(error))
+    const data = await res.json()
+    var AlertError = true
+    if(!res.ok){
+      //throw new Error(`HTTP Error: ${data.message}`)
+      setAlertObj({message: data.message, error:AlertError})
+    } else{
+        if (data.statusCode === 200){
+          AlertError = !AlertError
+          setName('')
+          setEmail('')
+          setMessage('')
+        }
+        setAlertObj({message: data.body.message, error:AlertError})
+    }
+    
+    } catch (error) {
+      console.log(error);
+      setAlertObj({message: 'HTTP Error', error: true})
+    }
+    setSendingMessage(false)
   }
 
   return (
@@ -89,8 +95,8 @@ const ContactSection = () => {
             />
 
           {Object.keys(alertObj).length ? <Alert 
-            message={alertObj.message}
-            error={alertObj.error}
+            alertObj={alertObj}
+            reset={setAlertObj}
             /> : ''}
 
           {sendingMessage ?  <LoadingComponent /> :

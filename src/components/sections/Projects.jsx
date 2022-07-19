@@ -18,14 +18,14 @@ const ProjectsSection = () => {
               imageSrc={bienesRaicesIMG} 
               title='Real State Project' 
               description={'Static Website I developed using pure HTML and CSS. In the future, I might convert this project in a dynamic solution hosted in the cloud'}
-              projectHref={'./src/projects/bienesraices/index.html'}
+              projectHref={'https://d18qusgtjlx6yp.cloudfront.net/projects/bienesraices/index.html'}
             />
 
             <ProjectCard 
               imageSrc={coffeeBlogIMG} 
               title='Coffee Blog' 
               description={'This is an Static Website I developed using technologies such as HTML and CSS and is served from an S3 bucket through cloudfront'}
-              projectHref={'./src/projects/blogdecafe/index.html'}
+              projectHref={'https://d18qusgtjlx6yp.cloudfront.net/projects/blogdecafe/index.html'}
             />
             
             <ProjectCard 
@@ -39,14 +39,14 @@ const ProjectsSection = () => {
               imageSrc={festivalIMG} 
               title={'Rock & EDM Festival'}
               description={'This is an Static Website I developed using technologies such as HTML and CSS and is from an S3 bucket through cloudfront'}
-              projectHref={'./src/projects/FestivalMusica/index.html'}
+              projectHref={'https://d18qusgtjlx6yp.cloudfront.net/projects/FestivalMusica/index.html'}
             />
 
             <ProjectCard 
               imageSrc={citasReactIMG} 
               title='Vet Assistant' 
               description={'Static Website, developed using React. The application works with Local Storage. In the future might use DynamoDB as Storage'}
-              projectHref={'./src/projects/APV/index.html'}
+              projectHref={'https://d18qusgtjlx6yp.cloudfront.net/projects/APV/index.html'}
             />
 
           </div>
